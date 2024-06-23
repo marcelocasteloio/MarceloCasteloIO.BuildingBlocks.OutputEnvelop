@@ -1,0 +1,1 @@
+# MarceloCasteloIO.BuildingBlocks.OutputEnvelop
