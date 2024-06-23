@@ -397,3 +397,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/.reportgenerator/reportgenerator
+/.stryker/stryker
+/tst/UnitTests/Coverage
