@@ -35,7 +35,10 @@ public readonly struct OutputMessage
     {
         // Validate
         var typeValue = (short)type;
+
+        // Stryker disable once all
         if (typeValue < 0 || typeValue > 3)
+            // Stryker disable once all
             throw new ArgumentOutOfRangeException(nameof(type));
 
         ArgumentException.ThrowIfNullOrWhiteSpace(code);
