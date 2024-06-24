@@ -7,6 +7,7 @@ public readonly struct OutputMessage
     public OutputMessageType Type { get; }
     public string Code { get; }
     public string? Description { get; }
+    public bool IsValid { get; }
 
     // Constructors
     private OutputMessage(
@@ -18,6 +19,8 @@ public readonly struct OutputMessage
         Type = type;
         Code = code;
         Description = description;
+
+        IsValid = true;
     }
 
     // Public Methods
@@ -37,7 +40,7 @@ public readonly struct OutputMessage
         var typeValue = (short)type;
 
         // Stryker disable once all
-        if (typeValue < 0 || typeValue > 3)
+        if (typeValue <= 0 || typeValue > 3)
             // Stryker disable once all
             throw new ArgumentOutOfRangeException(nameof(type));
 

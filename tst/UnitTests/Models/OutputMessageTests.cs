@@ -79,6 +79,7 @@ public class OutputMessageTests
 
         foreach (var createdOutputMessage in createdOutputMessageCollection)
         {
+            createdOutputMessage.OutputMessage.IsValid.Should().BeTrue();
             createdOutputMessage.OutputMessage.Type.Should().Be(expectedOutputMessageType);
             createdOutputMessage.OutputMessage.Code.Should().Be(createdOutputMessage.Code);
             createdOutputMessage.OutputMessage.Description.Should().Be(createdOutputMessage.Description);
@@ -118,6 +119,7 @@ public class OutputMessageTests
 
         foreach (var createdOutputMessage in createdOutputMessageCollection)
         {
+            createdOutputMessage.OutputMessage.IsValid.Should().BeTrue();
             createdOutputMessage.OutputMessage.Type.Should().Be(expectedOutputMessageType);
             createdOutputMessage.OutputMessage.Code.Should().Be(createdOutputMessage.Code);
             createdOutputMessage.OutputMessage.Description.Should().Be(createdOutputMessage.Description);
@@ -157,6 +159,7 @@ public class OutputMessageTests
 
         foreach (var createdOutputMessage in createdOutputMessageCollection)
         {
+            createdOutputMessage.OutputMessage.IsValid.Should().BeTrue();
             createdOutputMessage.OutputMessage.Type.Should().Be(expectedOutputMessageType);
             createdOutputMessage.OutputMessage.Code.Should().Be(createdOutputMessage.Code);
             createdOutputMessage.OutputMessage.Description.Should().Be(createdOutputMessage.Description);
@@ -185,6 +188,7 @@ public class OutputMessageTests
         // Assert
         for (int i = 0; i < outputMessageCollection.Length; i++)
         {
+            changedDescriptionOutputMessageCollection[i].IsValid.Should().BeTrue();
             changedDescriptionOutputMessageCollection[i].Type.Should().Be(outputMessageCollection[i].Type);
             changedDescriptionOutputMessageCollection[i].Code.Should().Be(outputMessageCollection[i].Code);
             changedDescriptionOutputMessageCollection[i].Description.Should().NotBe(outputMessageCollection[i].Description);
@@ -226,5 +230,17 @@ public class OutputMessageTests
         // Assert
         foreach (var outputAction in createActionCollection)
             outputAction.Should().Throw<Exception>();
+    }
+
+    [Fact]
+    public void OutputMessage_Should_Invalid_From_Default()
+    {
+        // Arrange and act
+        var outputMessage = default(OutputMessage);
+
+        // Assert
+        outputMessage.Code.Should().BeNull();
+        outputMessage.Description.Should().BeNull();
+        outputMessage.IsValid.Should().BeFalse();
     }
 }
